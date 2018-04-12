@@ -38,6 +38,15 @@ public class SerializeWriterTest {
     }
 
     private String doTestWrite(String input) throws UnsupportedEncodingException {
+        writer.write(new ArrayList<String>());
+        writer.flush();
+        String result1 = this.baos.toString("UTF-8");
+        writer.writeString("[]", (char) 0);
+        writer.flush();
+        String result2 = this.baos.toString("UTF-8");
+
+        Assert.assertEquals(JSON.parse(result2), JSON.parse(result1));
+        
         writer.writeString(input, (char) 0);
         writer.flush();
         String result = this.baos.toString("UTF-8");
