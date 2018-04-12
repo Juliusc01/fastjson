@@ -74,7 +74,7 @@ public class TestIssue885 extends JerseyTest {
         assertNotNull(user.getCreatedOn());
         assertEquals(user.getId().longValue(), 12345L);
         assertEquals(user.getName(), "smallnest");
-        assertTrue(user.getCreatedOn() > 0);
+        assertTrue(user.getCreatedOn() < new Date());
     }
 
 }
