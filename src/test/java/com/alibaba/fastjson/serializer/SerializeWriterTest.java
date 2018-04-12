@@ -5,6 +5,7 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Logger;
 import java.util.List;
+import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Assert;
