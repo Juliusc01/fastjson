@@ -16,7 +16,7 @@ public class SerializeWriterTest extends TestCase {
         char [] array;
         array = null;
         SerializeWriter out = new SerializeWriter(1);
-        out.writeStringWithDoubleQuote(array, 0);
+        out.writeStringWithDoubleQuote(array, '0');
         Assert.assertEquals("null", out.toString());
     }
     
