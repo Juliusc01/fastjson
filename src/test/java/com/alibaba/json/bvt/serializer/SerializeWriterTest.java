@@ -12,6 +12,12 @@ import junit.framework.TestCase;
 
 public class SerializeWriterTest extends TestCase {
 
+    public void myTest() throws Exception {
+        SerializeWriter out = new SerializeWriter(1);
+        out.writeStringWithDoubleQuote([], 0);
+        Assert.assertEquals("null", out.toString());
+    }
+    
     public void test_0() throws Exception {
         SerializeWriter out = new SerializeWriter(1);
         out.write('a');
