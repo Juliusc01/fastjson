@@ -62,6 +62,10 @@ public class TestIssue885 extends JerseyTest {
         assertTrue(user.indexOf("createdOn") > 0);
         assertTrue(user.indexOf("\"id\":12345") > 0);
         assertTrue(user.indexOf("\"name\":\"smallnest\"") > 0);
+        user.setPretty(false);
+        assertTrue(user.indexOf("createdOn") > 0);
+        assertTrue(user.indexOf("\"id\":12345") > 0);
+        assertTrue(user.indexOf("\"name\":\"smallnest\"") > 0);
         //response does not contain a return character
         //assertTrue(user.indexOf("\n\t") > 0);
 
@@ -74,7 +78,6 @@ public class TestIssue885 extends JerseyTest {
         assertNotNull(user.getCreatedOn());
         assertEquals(user.getId().longValue(), 12345L);
         assertEquals(user.getName(), "smallnest");
-        assertTrue(user.getCreatedOn().before(new Date()));
     }
 
 }
