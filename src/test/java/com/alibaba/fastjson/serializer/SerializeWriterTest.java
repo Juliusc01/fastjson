@@ -80,4 +80,21 @@ public class SerializeWriterTest {
         }
         this.doTestWrite(builder.toString());
     }
+    
+    @Test
+    public void writeListEmpty() throws UnsupportedEncodingException {
+        writer.write(new ArrayList<String>());
+        writer.flush();
+        String result = this.baos.toString("UTF-8");
+        writer.writeString("[]", (char) 0);
+        write.flush();
+        String result2 = this.baos.toString("UTF-8");
+
+        Assert.assertEquals(JSON.parse(result2), JSON.parse(result));
+
+        logger.info(result);
+
+        return result;
+    }
+
 }
