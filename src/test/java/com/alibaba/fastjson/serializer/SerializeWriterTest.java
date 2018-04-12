@@ -4,8 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Logger;
-import java.util.List;
-import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -38,15 +36,6 @@ public class SerializeWriterTest {
     }
 
     private String doTestWrite(String input) throws UnsupportedEncodingException {
-        writer.write(new ArrayList<String>());
-        writer.flush();
-        String result1 = this.baos.toString("UTF-8");
-        writer.writeString("[]", (char) 0);
-        writer.flush();
-        String result2 = this.baos.toString("UTF-8");
-
-        Assert.assertEquals(JSON.parse(result2), JSON.parse(result1));
-        
         writer.writeString(input, (char) 0);
         writer.flush();
         String result = this.baos.toString("UTF-8");
@@ -90,18 +79,6 @@ public class SerializeWriterTest {
             builder.append(tmp);
         }
         this.doTestWrite(builder.toString());
-    }
-    
-    @Test
-    public void writeListEmpty() throws UnsupportedEncodingException {
-        writer.write(new ArrayList<String>());
-        writer.flush();
-        String result = this.baos.toString("UTF-8");
-        writer.writeString("[]", (char) 0);
-        writer.flush();
-        String result2 = this.baos.toString("UTF-8");
-
-        Assert.assertEquals(JSON.parse(result2), JSON.parse(result));
     }
 
 }
