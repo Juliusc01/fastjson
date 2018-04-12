@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Logger;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -87,14 +88,10 @@ public class SerializeWriterTest {
         writer.flush();
         String result = this.baos.toString("UTF-8");
         writer.writeString("[]", (char) 0);
-        write.flush();
+        writer.flush();
         String result2 = this.baos.toString("UTF-8");
 
         Assert.assertEquals(JSON.parse(result2), JSON.parse(result));
-
-        logger.info(result);
-
-        return result;
     }
 
 }
